@@ -1,13 +1,13 @@
-package com.georgeracu.demosussex;
+package com.georgeracu.demo.springboot;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class DemoSussexApplication {
+public class MainApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(DemoSussexApplication.class, args);
+		SpringApplication.run(MainApplication.class, args);
 	}
 
 }

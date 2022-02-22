@@ -1,4 +1,4 @@
-package com.georgeracu.demo.springboot.adapter.hotel;
+package com.georgeracu.demo.springboot.adapter.hotel.rest;
 
 public class HotelResponse {
 }

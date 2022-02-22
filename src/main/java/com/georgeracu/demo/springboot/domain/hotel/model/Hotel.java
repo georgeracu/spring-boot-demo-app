@@ -1,4 +1,4 @@
-package com.georgeracu.demo.springboot.domain.hotel.usecase;
+package com.georgeracu.demo.springboot.domain.hotel.model;
 
 public class Hotel {
 }

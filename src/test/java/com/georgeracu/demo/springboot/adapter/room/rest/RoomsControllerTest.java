@@ -1,21 +1,20 @@
 package com.georgeracu.demo.springboot.adapter.room.rest;
 
 import com.georgeracu.demo.springboot.domain.room.model.Room;
+import com.georgeracu.demo.springboot.port.room.CreateRoomUseCase;
 import com.georgeracu.demo.springboot.port.room.GetRoomsUseCase;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.hamcrest.Matchers.containsString;
-import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.mockito.Mockito.*;
 
 /**
  * Author georgicaracu
@@ -23,13 +22,15 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class RoomsControllerTest {
 
     private RoomsController controller;
-
     private GetRoomsUseCase getRoomsUseCase;
+    private CreateRoomUseCase createRoomUseCase;
 
     @BeforeEach
     void setup() {
         getRoomsUseCase = Mockito.mock(GetRoomsUseCase.class);
-        controller = new RoomsController(getRoomsUseCase);
+        createRoomUseCase = Mockito.mock(CreateRoomUseCase.class);
+
+        controller = new RoomsController(getRoomsUseCase, createRoomUseCase);
     }
 
     @Test
@@ -63,4 +64,35 @@ class RoomsControllerTest {
                 .isEmpty();
     }
 
+    @Test
+    void shouldCreateRoom() {
+        // arrange
+        final RoomRequest request = RoomRequest.builder().name("Blue room").build();
+        final RoomResponse expected = RoomResponse.builder().name("Blue room").build();
+        final Room room = Room.builder().name("Blue room").build();
+        when(createRoomUseCase.execute(room)).thenReturn(Optional.of(Room.builder().name("Blue room").build()));
+
+        // act
+        final ResponseEntity<RoomResponse> response = controller.createRoom(request);
+
+        // assert
+        assertThat(response).isNotNull();
+        assertThat(response.getBody())
+                .isNotNull()
+                .usingRecursiveComparison().isEqualTo(expected);
+
+        verify(createRoomUseCase).execute(room);
+    }
+
+    @Test
+    void shouldNotCreateRoomWhenInvalidPayload() {
+
+        // act
+        final ResponseEntity<RoomResponse> response = controller.createRoom(null);
+
+        // assert
+        assertThat(response.getStatusCode()).isEqualByComparingTo(HttpStatus.BAD_REQUEST);
+
+        verifyNoInteractions(createRoomUseCase);
+    }
 }

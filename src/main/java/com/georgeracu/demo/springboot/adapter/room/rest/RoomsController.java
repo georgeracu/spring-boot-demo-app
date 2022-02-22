@@ -1,28 +1,40 @@
 package com.georgeracu.demo.springboot.adapter.room.rest;
 
-import com.georgeracu.demo.springboot.domain.room.usecase.GetRoomsUseCaseImpl;
+import com.georgeracu.demo.springboot.domain.room.model.RoomRequestToRoom;
+import com.georgeracu.demo.springboot.port.room.CreateRoomUseCase;
 import com.georgeracu.demo.springboot.port.room.GetRoomsUseCase;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Optional;
 
 /**
  * Author georgicaracu
  */
-@RestController
+@Controller
 @RequestMapping("/api/v1/rooms")
 public class RoomsController {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(RoomsController.class.getCanonicalName());
+
     private final GetRoomsUseCase getRoomsUseCase;
+    private final CreateRoomUseCase createRoomUseCase;
 
     @Autowired
-    public RoomsController(final GetRoomsUseCase getRoomsUseCase) {
+    public RoomsController(final GetRoomsUseCase getRoomsUseCase,
+                           final CreateRoomUseCase createRoomUseCase) {
         this.getRoomsUseCase = getRoomsUseCase;
+        this.createRoomUseCase = createRoomUseCase;
     }
 
     @GetMapping
@@ -30,4 +42,16 @@ public class RoomsController {
     public List<RoomResponse> getRooms() {
         return getRoomsUseCase.execute().stream().map(RoomToRoomResponse::map).toList();
     }
+
+    @PostMapping
+    @ResponseBody
+    public ResponseEntity<RoomResponse> createRoom(@Validated RoomRequest request) {
+        return Optional.ofNullable(request)
+                .map(RoomRequestToRoom::map)
+                .flatMap(createRoomUseCase::execute)
+                .map(RoomToRoomResponse::map)
+                .map(response -> new ResponseEntity<>(response, HttpStatus.CREATED))
+                .orElseGet(() -> new ResponseEntity<>(HttpStatus.BAD_REQUEST));
+    }
+
 }

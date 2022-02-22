@@ -14,7 +14,7 @@ public final class RoomToRoomResponse {
             throw new IllegalArgumentException("Room cannot be null");
         }
         return RoomResponse.builder()
-                .name(room.getName())
+                .name(room.name())
                 .build();
     }
 }

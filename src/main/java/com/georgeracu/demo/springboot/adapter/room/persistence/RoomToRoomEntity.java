@@ -11,7 +11,7 @@ public final class RoomToRoomEntity {
 
     public static RoomEntity map(final Room room) {
         return RoomEntity.builder()
-                .name(room.getName())
+                .name(room.name())
                 .build();
     }
 }

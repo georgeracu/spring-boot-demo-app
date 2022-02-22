@@ -3,7 +3,7 @@ kind: Service
 metadata:
   creationTimestamp: "2020-12-06T21:36:38Z"
   labels:
-    app: sussex-demo
+    app: demo-app
   managedFields:
   - apiVersion: v1
     fieldsType: FieldsV1
@@ -29,10 +29,10 @@ metadata:
     manager: kubectl-expose
     operation: Update
     time: "2020-12-06T21:36:38Z"
-  name: sussex-demo
+  name: demo-app
   namespace: default
   resourceVersion: "11041"
-  selfLink: /api/v1/namespaces/default/services/sussex-demo
+  selfLink: /api/v1/namespaces/default/services/demo-app
   uid: 1aee58a4-d043-43db-9191-b749aeb756eb
 spec:
   clusterIP: 10.97.131.254
@@ -43,7 +43,7 @@ spec:
     protocol: TCP
     targetPort: 8080
   selector:
-    app: sussex-demo
+    app: demo-app
   sessionAffinity: None
   type: NodePort
 status:

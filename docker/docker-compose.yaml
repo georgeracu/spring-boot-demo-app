@@ -1,0 +1,29 @@
+version: '3.3'
+
+volumes:
+  pgdata:
+    driver: local
+
+services:
+  hotels-db:
+    image: postgres:14-alpine3.15
+    restart: always
+    environment:
+      POSTGRES_DB: hotels
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: mysecretpassword
+    ports: 
+      - '5432:5432'
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  pg-admin:
+    image: dpage/pgadmin4
+    depends_on:
+      - hotels-db
+    environment:
+      PGADMIN_DEFAULT_EMAIL: user@example.com
+      PGADMIN_DEFAULT_PASSWORD: SuperSecret
+      PGADMIN_LISTEN_PORT: 80
+    ports:
+      - '54380:80'

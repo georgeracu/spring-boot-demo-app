@@ -4,8 +4,8 @@ metadata:
   annotations:
     deployment.kubernetes.io/revision: "1"
   labels:
-    app: sussex-demo
-  name: sussex-demo
+    app: demo-app
+  name: demo-app
   namespace: default
 spec:
   progressDeadlineSeconds: 600
@@ -13,7 +13,7 @@ spec:
   revisionHistoryLimit: 10
   selector:
     matchLabels:
-      app: sussex-demo
+      app: demo-app
   strategy:
     rollingUpdate:
       maxSurge: 25%
@@ -22,12 +22,12 @@ spec:
   template:
     metadata:
       labels:
-        app: sussex-demo
+        app: demo-app
     spec:
       containers:
-      - image: sussex-demo:v1
+      - image: demo-app:v1
         imagePullPolicy: IfNotPresent
-        name: sussex-demo
+        name: demo-app
         ports:
         - containerPort: 8080
           protocol: TCP

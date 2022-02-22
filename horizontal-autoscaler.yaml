@@ -35,10 +35,10 @@ metadata:
     manager: kube-controller-manager
     operation: Update
     time: "2020-12-06T21:58:35Z"
-  name: sussex-demo
+  name: demo-app
   namespace: default
   resourceVersion: "12145"
-  selfLink: /apis/autoscaling/v1/namespaces/default/horizontalpodautoscalers/sussex-demo
+  selfLink: /apis/autoscaling/v1/namespaces/default/horizontalpodautoscalers/demo-app
   uid: dbbfd5f0-538d-4618-9fd5-72fe98704977
 spec:
   maxReplicas: 5
@@ -46,7 +46,7 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: sussex-demo
+    name: demo-app
   targetCPUUtilizationPercentage: 50
 status:
   currentReplicas: 1

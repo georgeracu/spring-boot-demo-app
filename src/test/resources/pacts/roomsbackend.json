@@ -1,0 +1,32 @@
+{
+  "consumer": {
+    "name": "HotelsWebApp"
+  },
+  "provider": {
+    "name": "HotelsBackend"
+  },
+  "interactions": [
+    {
+      "description": "A request to get all rooms",
+      "providerState": "A room exists",
+      "request": {
+        "method": "get",
+        "path": "/api/v1/rooms"
+      },
+      "response": {
+        "status": 200,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": [{
+          "name": "Pact room"
+        }]
+      }
+    }
+  ],
+  "metadata": {
+    "pactSpecification": {
+      "version": "2.0.0"
+    }
+  }
+}

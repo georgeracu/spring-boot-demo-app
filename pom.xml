@@ -21,6 +21,7 @@
 		<skipTests>false</skipTests>
 		<skipUnitTests>${skipTests}</skipUnitTests>
 		<skipIntegrationTests>${skipTests}</skipIntegrationTests>
+		<pact.version>4.3.4</pact.version>
 	</properties>
 
 	<dependencies>
@@ -76,6 +77,26 @@
 			<artifactId>postgresql</artifactId>
 			<version>${testcontainers.version}</version>
 			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>au.com.dius.pact.consumer</groupId>
+			<artifactId>junit5</artifactId>
+			<version>${pact.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>au.com.dius.pact.provider</groupId>
+			<artifactId>junit5</artifactId>
+			<version>${pact.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>au.com.dius.pact.provider</groupId>
+			<artifactId>spring</artifactId>
+			<version>${pact.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>au.com.dius.pact.provider</groupId>
+			<artifactId>junit5spring</artifactId>
+			<version>${pact.version}</version>
 		</dependency>
 	</dependencies>
 

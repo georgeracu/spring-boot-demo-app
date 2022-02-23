@@ -1,4 +1,6 @@
-# sussex-k8s-demo
+# Spring Boot k8s-demo
+[![Java CI with Maven](https://github.com/georgeracu/spring-boot-demo-app/actions/workflows/maven.yaml/badge.svg?branch=main)](https://github.com/georgeracu/spring-boot-demo-app/actions/workflows/maven.yaml)
+
 Demo repository for running a Spring Boot app in a Kubernetes cluster
 
 ## How to run it

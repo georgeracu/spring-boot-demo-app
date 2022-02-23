@@ -5,7 +5,7 @@ metadata:
     deployment.kubernetes.io/revision: "1"
   labels:
     app: demo-app
-  name: demo-app
+  name: demo-app-deployment
   namespace: default
 spec:
   progressDeadlineSeconds: 600
@@ -25,16 +25,16 @@ spec:
         app: demo-app
     spec:
       containers:
-      - image: demo-app:v1
-        imagePullPolicy: IfNotPresent
+      - image: demo-app:v4
+        imagePullPolicy: Never
         name: demo-app
         ports:
         - containerPort: 8080
           protocol: TCP
         resources:
           limits:
-            cpu: 100m
-            memory: 256Mi
+            cpu: 400m
+            memory: 512Mi
           requests:
             cpu: 25m
             memory: 128Mi

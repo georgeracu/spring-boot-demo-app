@@ -3,6 +3,7 @@ package com.georgeracu.demo.springboot.adapter.room.persistence;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.UUID;
@@ -10,6 +11,7 @@ import java.util.UUID;
 @Builder
 @EqualsAndHashCode
 @Getter
+@NoArgsConstructor
 @Entity(name = "RoomEntity")
 @Table(name = "rooms")
 public class RoomEntity {

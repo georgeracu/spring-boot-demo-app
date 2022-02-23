@@ -27,8 +27,9 @@ import static org.mockito.Mockito.when;
 
 @ActiveProfiles("test")
 @Provider("HotelsBackend")
-@PactFolder("pacts")
+//@PactFolder("pacts")
 @WebMvcTest(controllers = RoomsController.class)
+@PactBroker(url = "http://192.168.49.2:30589/")
 class RoomsProviderPactTest {
 
     @Autowired

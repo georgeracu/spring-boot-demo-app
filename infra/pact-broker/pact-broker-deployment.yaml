@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pact-broker-deployment
+  labels:
+    app: pact-broker
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pact-broker
+  template:
+    metadata:
+      labels:
+        app: pact-broker
+    spec:
+      containers:
+        - name: pact-broker
+          image: pactfoundation/pact-broker:2.94.0.0
+          imagePullPolicy: "IfNotPresent"
+          ports:
+            - containerPort: 9292
+          envFrom:
+            - configMapRef:
+                name: pact-broker-config
+      restartPolicy: Always

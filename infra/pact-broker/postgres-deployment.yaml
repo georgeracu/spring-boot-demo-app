@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: postgres
+  name: postgres-deployment
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgres
+#  strategy:
+#    type: Recreate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: postgres
+    spec:
+      containers:
+        - name: postgres
+          image: postgres:14-alpine3.15
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: postgresdb
+          envFrom:
+            - configMapRef:
+                name: postgres-config
+      restartPolicy: Always
+      volumes:
+        - name: postgresdb
+          persistentVolumeClaim:
+            claimName: postgres-claim

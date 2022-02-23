@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: pact-broker-config
+  labels:
+    app: pact-broker
+data:
+  PACT_BROKER_DATABASE_USERNAME: 'postgres'
+  PACT_BROKER_DATABASE_PASSWORD: 'postgres'
+  PACT_BROKER_DATABASE_HOST: 'postgres'
+  PACT_BROKER_DATABASE_NAME: 'postgres'
+  PORT: '9292'
+  PACT_BROKER_BASE_URL: 'http://192.168.64.2:31401'

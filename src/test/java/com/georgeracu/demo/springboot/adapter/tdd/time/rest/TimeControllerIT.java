@@ -1,4 +1,4 @@
-package com.georgeracu.demo.springboot.adapter.time.rest;
+package com.georgeracu.demo.springboot.adapter.tdd.time.rest;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

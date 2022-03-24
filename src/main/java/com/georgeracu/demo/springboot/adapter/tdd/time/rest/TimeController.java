@@ -1,5 +1,6 @@
-package com.georgeracu.demo.springboot.adapter.time.rest;
+package com.georgeracu.demo.springboot.adapter.tdd.time.rest;
 
+import com.georgeracu.demo.springboot.adapter.tdd.rest.GetTime;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -1,4 +1,4 @@
-package com.georgeracu.demo.springboot.adapter.time.rest;
+package com.georgeracu.demo.springboot.adapter.tdd.rest;
 
 import java.time.ZonedDateTime;
 

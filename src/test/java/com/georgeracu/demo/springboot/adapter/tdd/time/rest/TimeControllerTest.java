@@ -1,6 +1,7 @@
-package com.georgeracu.demo.springboot.adapter.time.rest;
+package com.georgeracu.demo.springboot.adapter.tdd.time.rest;
 
 
+import com.georgeracu.demo.springboot.adapter.tdd.rest.GetTime;
 import org.junit.jupiter.api.Test;
 
 import java.time.ZonedDateTime;

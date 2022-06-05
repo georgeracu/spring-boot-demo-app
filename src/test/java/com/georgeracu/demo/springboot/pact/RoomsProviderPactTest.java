@@ -12,6 +12,7 @@ import com.georgeracu.demo.springboot.domain.room.model.Room;
 import com.georgeracu.demo.springboot.port.room.CreateRoomUseCase;
 import com.georgeracu.demo.springboot.port.room.GetRoomsUseCase;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.TestTemplate;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +47,12 @@ class RoomsProviderPactTest {
         context.setTarget(new MockMvcTestTarget(mockMvc));
     }
 
+    /*
+     * Disabled as it requires a running instance of Pact broker.
+     * For demo purposes can be disabled and Pact broker started.
+     * TODO: Make the CI server publish to the Pact broker with every build
+     */
+    @Disabled
     @TestTemplate
     @ExtendWith(PactVerificationInvocationContextProvider.class)
     void pactVerification(PactVerificationContext context) {

@@ -5,6 +5,7 @@
   "provider": {
     "name": "HotelsBackend"
   },
+  "consumerApplicationVersion": "10",
   "interactions": [
     {
       "description": "A request to get all rooms",
@@ -21,6 +22,23 @@
         "body": [{
           "name": "Pact room"
         }]
+      }
+    },
+    {
+      "description": "A request to create a room",
+      "providerState": "This room doesn't exist",
+      "request": {
+        "method": "post",
+        "path": "/api/v1/rooms"
+      },
+      "response": {
+        "status": 201,
+        "headers": {
+          "content-type": "application/json"
+        },
+        "body": {
+          "name": "New Pact room"
+        }
       }
     }
   ],

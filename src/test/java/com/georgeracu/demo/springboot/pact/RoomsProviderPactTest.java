@@ -7,7 +7,6 @@ import au.com.dius.pact.provider.junitsupport.State;
 import au.com.dius.pact.provider.junitsupport.loader.PactBroker;
 import au.com.dius.pact.provider.junitsupport.loader.PactFolder;
 import au.com.dius.pact.provider.spring.junit5.MockMvcTestTarget;
-import au.com.dius.pact.provider.spring.junit5.PactVerificationSpringProvider;
 import com.georgeracu.demo.springboot.adapter.room.rest.RoomsController;
 import com.georgeracu.demo.springboot.domain.room.model.Room;
 import com.georgeracu.demo.springboot.port.room.CreateRoomUseCase;
@@ -22,14 +21,16 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.List;
+import java.util.Optional;
 
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 @ActiveProfiles("test")
 @Provider("HotelsBackend")
-//@PactFolder("pacts")
+@PactFolder("pacts")
 @WebMvcTest(controllers = RoomsController.class)
-@PactBroker(url = "http://192.168.49.2:30589/")
+@PactBroker(url = "http://192.168.49.2:31491/")
 class RoomsProviderPactTest {
 
     @Autowired
@@ -56,6 +57,13 @@ class RoomsProviderPactTest {
         when(getRoomsUseCase.execute()).thenReturn(
                 List.of(
                         Room.builder().name("Pact room").build()));
+    }
+
+    @State(value = "This room doesn't exist")
+    void shouldCreateRoom() {
+        when(createRoomUseCase.execute(any())).thenReturn(
+                Optional.of(
+                        Room.builder().name("New Pact room").build()));
     }
 
 }

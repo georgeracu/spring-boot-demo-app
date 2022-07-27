@@ -1,0 +1,14 @@
+type Query {
+    allBooking: [Booking]
+}
+type Room {
+    name: String
+}
+
+type Hotel {
+    name: String
+}
+type Booking {
+    hotel: Hotel
+    rooms: [Room]
+}

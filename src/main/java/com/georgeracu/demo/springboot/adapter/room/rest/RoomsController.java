@@ -3,6 +3,7 @@ package com.georgeracu.demo.springboot.adapter.room.rest;
 import com.georgeracu.demo.springboot.domain.room.model.RoomRequestToRoom;
 import com.georgeracu.demo.springboot.port.room.CreateRoomUseCase;
 import com.georgeracu.demo.springboot.port.room.GetRoomsUseCase;
+import io.micrometer.core.annotation.Timed;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,7 @@ import java.util.Optional;
  */
 @Controller
 @RequestMapping("/api/v1/rooms")
+@Timed(value = "hotel.app.rooms")
 public class RoomsController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(RoomsController.class.getCanonicalName());

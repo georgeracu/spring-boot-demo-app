@@ -31,7 +31,7 @@ class GetRoomsUseCaseTest {
     void shouldReturnRoomsWhenAvailable() {
         // arrange
         final RoomEntity entity = RoomEntity.builder().id(UUID.randomUUID()).build();
-        final Room expected = RoomEntityToRoom.map(entity).get();
+        final Room expected = RoomEntityToRoom.map(entity);
         when(repository.findAll()).thenReturn(Collections.singletonList(entity));
 
         // act

@@ -11,7 +11,6 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.Collections;
-import java.util.Optional;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
@@ -50,7 +49,7 @@ class RoomsControllerIT {
     void shouldCreateARoom() throws Exception {
         // arrange
         final Room room = Room.builder().name("Some name").build();
-        when(createRoomUseCase.execute(any())).thenReturn(Optional.of(room));
+        when(createRoomUseCase.execute(any())).thenReturn(room);
 
         // act
         this.mockMvc.perform(post("/api/v1/rooms"))

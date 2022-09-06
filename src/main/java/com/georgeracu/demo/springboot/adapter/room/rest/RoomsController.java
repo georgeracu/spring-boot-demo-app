@@ -48,7 +48,7 @@ public class RoomsController {
     public ResponseEntity<RoomResponse> createRoom(@Validated RoomRequest request) {
         return Optional.ofNullable(request)
                 .map(RoomRequestToRoom::map)
-                .flatMap(createRoomUseCase::execute)
+                .map(createRoomUseCase::execute)
                 .map(RoomToRoomResponse::map)
                 .map(response -> new ResponseEntity<>(response, HttpStatus.CREATED))
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.BAD_REQUEST));

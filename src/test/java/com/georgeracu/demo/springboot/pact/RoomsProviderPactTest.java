@@ -22,7 +22,6 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.List;
-import java.util.Optional;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
@@ -68,9 +67,7 @@ class RoomsProviderPactTest {
 
     @State(value = "This room doesn't exist")
     void shouldCreateRoom() {
-        when(createRoomUseCase.execute(any())).thenReturn(
-                Optional.of(
-                        Room.builder().name("New Pact room").build()));
+        when(createRoomUseCase.execute(any())).thenReturn(Room.builder().name("New Pact room").build());
     }
 
 }

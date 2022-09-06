@@ -3,7 +3,6 @@ package com.georgeracu.demo.springboot.domain.room.model;
 import com.georgeracu.demo.springboot.adapter.room.persistence.RoomEntity;
 import org.junit.jupiter.api.Test;
 
-import java.util.Optional;
 import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -22,13 +21,12 @@ class RoomEntityToRoomTest {
                 .name("Some name")
                 .build();
         // act
-        final Optional<Room> actual = RoomEntityToRoom.map(entity);
+        final Room actual = RoomEntityToRoom.map(entity);
 
         // assert
         assertThat(actual)
                 .isNotNull()
-                .isPresent();
-        assertThat(actual.get()).usingRecursiveComparison().isEqualTo(expected);
+                .usingRecursiveComparison().isEqualTo(expected);
     }
 
     @Test

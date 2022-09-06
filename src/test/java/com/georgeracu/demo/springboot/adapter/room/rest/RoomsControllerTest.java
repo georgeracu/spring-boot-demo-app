@@ -11,7 +11,6 @@ import org.springframework.http.ResponseEntity;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
@@ -70,7 +69,7 @@ class RoomsControllerTest {
         final RoomRequest request = RoomRequest.builder().name("Blue room").build();
         final RoomResponse expected = RoomResponse.builder().name("Blue room").build();
         final Room room = Room.builder().name("Blue room").build();
-        when(createRoomUseCase.execute(room)).thenReturn(Optional.of(Room.builder().name("Blue room").build()));
+        when(createRoomUseCase.execute(room)).thenReturn(Room.builder().name("Blue room").build());
 
         // act
         final ResponseEntity<RoomResponse> response = controller.createRoom(request);

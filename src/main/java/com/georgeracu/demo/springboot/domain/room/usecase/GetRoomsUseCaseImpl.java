@@ -7,7 +7,6 @@ import com.georgeracu.demo.springboot.port.room.RoomsRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-import java.util.Optional;
 
 @Component
 public class GetRoomsUseCaseImpl implements GetRoomsUseCase {
@@ -22,8 +21,6 @@ public class GetRoomsUseCaseImpl implements GetRoomsUseCase {
     public List<Room> execute() {
         return roomsRepository.findAll().stream()
                 .map(RoomEntityToRoom::map)
-                .filter(Optional::isPresent)
-                .map(Optional::get)
                 .toList();
     }
 }

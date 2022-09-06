@@ -7,8 +7,6 @@ import com.georgeracu.demo.springboot.port.room.CreateRoomUseCase;
 import com.georgeracu.demo.springboot.port.room.RoomsRepository;
 import org.springframework.stereotype.Component;
 
-import java.util.Optional;
-
 @Component
 public class CreateRoomUseCaseImpl implements CreateRoomUseCase {
 
@@ -19,7 +17,7 @@ public class CreateRoomUseCaseImpl implements CreateRoomUseCase {
     }
 
     @Override
-    public Optional<Room> execute(final Room request) {
+    public Room execute(final Room request) {
         return RoomEntityToRoom.map(roomsRepository.save(RoomToRoomEntity.map(request)));
     }
 }

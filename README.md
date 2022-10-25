@@ -85,3 +85,26 @@ Pact broker is used to test that the contracts between consumers and providers a
 * Change the method type to PUT, update query parameters to match the consumer and provider names and the version for consumer
 * Paste JSON pact in the body
 * Hit Send
+
+## Multi-module Maven app
+
+Create a Maven parent repository
+
+`mvn archetype:generate -DgroupId=com.georgeracu -DartifactId=demo-app`
+
+Inside the `pom.xml` file that's generated, add the following line
+
+`<packaging>pom</packaging>`
+
+Generate next modules
+
+```shell
+cd demo-app
+mvn archetype:generate -DgroupId=com.georgeracu -DartifactId=domain
+mvn archetype:generate -DgroupId=com.georgeracu -DartifactId=app
+mvn archetype:generate -DgroupId=com.georgeracu -DartifactId=persistence
+```
+
+Build the project
+
+`mvn clean package`

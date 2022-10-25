@@ -7,7 +7,7 @@ import au.com.dius.pact.provider.junitsupport.State;
 import au.com.dius.pact.provider.junitsupport.loader.PactBroker;
 import au.com.dius.pact.provider.junitsupport.loader.PactFolder;
 import au.com.dius.pact.provider.spring.junit5.MockMvcTestTarget;
-import com.georgeracu.demo.springboot.adapter.room.rest.RoomsController;
+import com.georgeracu.demo.springboot.adapter.room.RoomsController;
 import com.georgeracu.demo.springboot.domain.room.model.Room;
 import com.georgeracu.demo.springboot.port.room.CreateRoomUseCase;
 import com.georgeracu.demo.springboot.port.room.GetRoomsUseCase;

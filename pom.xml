@@ -45,6 +45,11 @@
 			<version>${springboot.version}</version>
 		</dependency>
 		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+			<version>${springboot.version}</version>
+		</dependency>
+		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<version>${lombok.version}</version>
@@ -179,7 +184,7 @@
   <modules>
 	  <module>persistence</module>
 <!--	  <module>messaging</module>-->
-<!--	  <module>google-client</module>-->
+	  <module>google-client</module>
 	  <module>domain</module>
 	  <module>web</module>
 <!--	  <module>application</module>-->

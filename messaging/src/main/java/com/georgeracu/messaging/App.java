@@ -1,4 +1,4 @@
-package com.georgeracu;
+package com.georgeracu.messaging;
 
 /**
  * Hello world!

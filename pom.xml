@@ -12,6 +12,7 @@
 	<properties>
 		<java.version>17</java.version>
 		<springboot.version>2.7.0</springboot.version>
+		<spring-cloud-version>2.2.6.RELEASE</spring-cloud-version>
 		<lombok.version>1.18.24</lombok.version>
 		<skipTests>false</skipTests>
 		<skipUnitTests>${skipTests}</skipUnitTests>
@@ -72,6 +73,11 @@
 			<version>${springboot.version}</version>
 		</dependency>
 		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-aws-messaging</artifactId>
+			<version>${spring-cloud-version}</version>
+		</dependency>
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<version>${springboot.version}</version>
@@ -97,12 +103,12 @@
 			<artifactId>junit5spring</artifactId>
 			<version>${pact.version}</version>
 		</dependency>
-<!--		<dependency>-->
-<!--			<groupId>org.junit.jupiter</groupId>-->
-<!--			<artifactId>junit-jupiter</artifactId>-->
-<!--			<version>${junit-jupiter.version}</version>-->
-<!--			<scope>test</scope>-->
-<!--		</dependency>-->
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter</artifactId>
+			<version>${junit-jupiter.version}</version>
+			<scope>test</scope>
+		</dependency>
 		<dependency>
 			<groupId>org.testcontainers</groupId>
 			<artifactId>testcontainers</artifactId>
@@ -118,6 +124,12 @@
 		<dependency>
 			<groupId>org.testcontainers</groupId>
 			<artifactId>postgresql</artifactId>
+			<version>${testcontainers.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.testcontainers</groupId>
+			<artifactId>localstack</artifactId>
 			<version>${testcontainers.version}</version>
 			<scope>test</scope>
 		</dependency>
@@ -183,10 +195,10 @@
 
   <modules>
 	  <module>persistence</module>
-<!--	  <module>messaging</module>-->
+	  <module>messaging</module>
 	  <module>google-client</module>
 	  <module>domain</module>
 	  <module>web</module>
-<!--	  <module>application</module>-->
+	  <module>application</module>
   </modules>
 </project>

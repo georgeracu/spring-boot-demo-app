@@ -25,6 +25,7 @@
 		<assertj-core.version>3.23.1</assertj-core.version>
 		<testcontainers.version>1.16.3</testcontainers.version>
 		<jackson-annotations.version>2.13.4</jackson-annotations.version>
+		<thymeleaf-spring5.version>3.0.15.RELEASE</thymeleaf-spring5.version>
 	</properties>
 
 	<dependencyManagement>
@@ -48,6 +49,32 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
 			<version>${springboot.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<version>${springboot.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+			<version>${springboot.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+			<version>${springboot.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-oauth2-client</artifactId>
+			<version>${springboot.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.thymeleaf</groupId>
+			<artifactId>thymeleaf-spring5</artifactId>
+			<version>${thymeleaf-spring5.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
@@ -106,6 +133,12 @@
 		<dependency>
 			<groupId>org.testcontainers</groupId>
 			<artifactId>testcontainers</artifactId>
+			<version>${testcontainers.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.testcontainers</groupId>
+			<artifactId>localstack</artifactId>
 			<version>${testcontainers.version}</version>
 			<scope>test</scope>
 		</dependency>
@@ -185,6 +218,7 @@
 	  <module>persistence</module>
 <!--	  <module>messaging</module>-->
 	  <module>google-client</module>
+	  <module>web-auth</module>
 	  <module>domain</module>
 	  <module>web</module>
 <!--	  <module>application</module>-->

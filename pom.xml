@@ -22,7 +22,7 @@
 		<skipUnitTests>${skipTests}</skipUnitTests>
 		<skipIntegrationTests>${skipTests}</skipIntegrationTests>
 		<pact.version>4.3.7</pact.version>
-		<wiremock.version>2.34.0</wiremock.version>
+		<wiremock.version>2.35.1</wiremock.version>
 		<resilience4j.version>1.7.1</resilience4j.version>
 	</properties>
 

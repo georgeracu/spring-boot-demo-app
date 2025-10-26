@@ -1,0 +1,34 @@
+# Build artifacts
+target/
+
+# IDE files
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+.settings/
+.classpath
+.project
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Docker files
+docker-compose*.yml
+
+# Documentation
+README.md
+HELP.md
+
+# Infrastructure
+infra/
+
+# Logs and reports
+*.log

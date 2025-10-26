@@ -7,27 +7,26 @@ import org.springframework.context.ApplicationContextInitializer;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.event.ContextClosedEvent;
 
-import java.util.Map;
-
-public class WireMockInitializer implements ApplicationContextInitializer<ConfigurableApplicationContext> {
-
+public class WireMockInitializer
+        implements ApplicationContextInitializer<ConfigurableApplicationContext> {
     @Override
-    public void initialize(ConfigurableApplicationContext applicationContext) {
-        WireMockServer wireMockServer = new WireMockServer(new WireMockConfiguration().dynamicPort());
+    public void initialize(ConfigurableApplicationContext configurableApplicationContext) {
+        WireMockServer wireMockServer = new WireMockServer(WireMockConfiguration.DYNAMIC_PORT);
         wireMockServer.start();
-
-        applicationContext
+        configurableApplicationContext
                 .getBeanFactory()
                 .registerSingleton("wireMockServer", wireMockServer);
-
-        applicationContext.addApplicationListener(applicationEvent -> {
+        configurableApplicationContext.addApplicationListener(applicationEvent -> {
             if (applicationEvent instanceof ContextClosedEvent) {
                 wireMockServer.stop();
             }
         });
 
+        String mockBaseUrl = "http://localhost:" + wireMockServer.port();
         TestPropertyValues
-                .of(Map.of("clients.google.base-url", wireMockServer.baseUrl()))
-                .applyTo(applicationContext);
+                .of("jwk.url=" + mockBaseUrl + "/openid/connect/jwks.json")
+                .applyTo(configurableApplicationContext);
+
     }
 }
+

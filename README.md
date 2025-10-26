@@ -8,7 +8,7 @@ Demo repository for running a Spring Boot app in a Kubernetes cluster
 ### For debugging locally
 
 ```shell
-docker-compose up -f docker/docker-compose.yaml &&
+docker compose -f docker/docker-compose.yaml up &&
 ./mvnw clean spring-boot:run
 ```
 
@@ -68,10 +68,18 @@ After starting Pact broker, make sure that the URL used in Pact tests matches th
 
 ## Things to do
 
-* Pact broker
-* ArchUnit
-* E2E working example of a use-case
-* Mapping of objects
+- [ ] Upgrade Spring Boot to 3.3.x
+- [ ] Upgrade all libraries
+- [ ] Convert this repo to build with Gradle
+- [ ] Convert this repo into a monorepo
+- [ ] Add a module to create a Spring Boot Starter
+- [ ] Resilience4j implementation
+- [ ] WireMock test example
+- [ ] Generic HTTP client with embedded Resilience4J
+- [ ] Pact broker
+- [ ] ArchUnit
+- [ ] E2E working example of a use-case
+- [ ] Mapping of objects
 
 ## How Pact broker works
 
@@ -85,3 +93,12 @@ Pact broker is used to test that the contracts between consumers and providers a
 * Change the method type to PUT, update query parameters to match the consumer and provider names and the version for consumer
 * Paste JSON pact in the body
 * Hit Send
+
+## Known issues
+
+- Ryuk is disabled for TestContainers due to permission issues on Mac M1 machines. To enable it, please set the environment variable `TESTCONTAINERS_RYUK_DISABLED=false`.
+- The following environment variables need to be se when running with Docker on Colima on Mac M1 machines:
+  - `DOCKER_HOST="unix://${HOME}/.colima/default/docker.sock"`
+  - `TESTCONTAINERS_DOCKER_SOCKET_OVERRIDE=/var/run/docker.sock`
+  - `TESTCONTAINERS_HOST_OVERRIDE=$(colima ls -j | jq -r '.address')`
+  - `TESTCONTAINERS_RYUK_DISABLED=true`

@@ -90,7 +90,7 @@ class RoomsControllerTest {
         final ResponseEntity<RoomResponse> response = controller.createRoom(null);
 
         // assert
-        assertThat(response.getStatusCode()).isEqualByComparingTo(HttpStatus.BAD_REQUEST);
+        assertThat(response.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
 
         verifyNoInteractions(createRoomUseCase);
     }

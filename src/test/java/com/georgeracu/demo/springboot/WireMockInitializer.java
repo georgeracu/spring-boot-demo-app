@@ -24,7 +24,8 @@ public class WireMockInitializer
 
         String mockBaseUrl = "http://localhost:" + wireMockServer.port();
         TestPropertyValues
-                .of("jwk.url=" + mockBaseUrl + "/openid/connect/jwks.json")
+                .of("jwk.url=" + mockBaseUrl + "/openid/connect/jwks.json",
+                    "clients.google.base-url=" + mockBaseUrl)
                 .applyTo(configurableApplicationContext);
 
     }

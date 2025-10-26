@@ -15,8 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
@@ -29,12 +29,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 
 
-@SpringBootTest(classes = {MainApplication.class}, webEnvironment = RANDOM_PORT)
+@SpringBootTest(classes = {MainApplication.class}, webEnvironment = RANDOM_PORT, properties = "spring.main.allow-bean-definition-overriding=true")
 @EnableAutoConfiguration(exclude = {DataSourceAutoConfiguration.class})
 @ContextConfiguration(initializers = {WireMockInitializer.class})
-class HttpClientImplTest {
+class HttpClientImplIT {
 
-    @MockBean
+    @MockitoBean
     private RoomsRepository roomsRepository;
 
     @Autowired
